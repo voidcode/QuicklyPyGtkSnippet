@@ -75,11 +75,3 @@ t = lxml.html.parse("http://www.google.com")
 print t.find(".//title").text
 
 
-How to “post” an string to an other Activity(putExtra, getString)
-#send a string to an Activity
-Intent i = new Intent(this, GotoThisActivity.class);
-i.putExtra("email", "some@email.com");
-startActivity(i);
-
-#retrive the string from the other Activity 
-print getIntent().getExtras().getString("email")
