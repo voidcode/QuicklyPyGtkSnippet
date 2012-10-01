@@ -7,15 +7,17 @@ Focus is on Python Gtk and Quickly.
 
 
 ##Add Ubuntu style to 'toolbar' or other widgets 
+```
 toolbar = builder.get_object("toolbar") 
 context = toolbar.get_style_context() 
 context.add_class(Gtk.STYLE_CLASS_PRIMARY_TOOLBAR)
-
+```
 
 ##Get root path to you app
 ```
 self.rootpath = os.path.split(os.path.abspath(os.path.dirname(__file__)))[0] 
 ```
+
 
 ##Get the relative path to you /media/data/background.png
 ```
@@ -26,7 +28,8 @@ def appfile(folder, file):
 ```
 
 ##How to use WebKit in a 'scrolledwindow'-widget
-gets the webkit and the scrolledwindow object.
+gets the webkit and the scrolledwindow object. 
+
 addes webview to scrolledwindow, then webview.open(url)  
 ```
 self.scrolledwindow = builder.get_object("scrolledwindow") 
@@ -40,6 +43,8 @@ self.webview.open("http://www.ubuntu.com")
 
 ##GtkFileChooserDialog with button-handler
 NB:This only returns the path of the select-folder.
+
+Output: path to select folder. Like /home/user/Desktop
 ```
 self.dialog = Gtk.FileChooserDialog() 
 self.button = self.dialog.add_button("Select-folder", Gtk.ResponseType.OK) 
@@ -51,7 +56,7 @@ def on_clicked_folder(self, widget):
 	self.dialog.hide() #hide dialog
 	print self.dialog.get_current_folder()
 ```
-Output: path to select folder. Like /home/user/Desktop
+
 
 
 ##Save GtkTextView data in a file
@@ -82,23 +87,30 @@ from gi.repository import Gtk, Gdk
 
 clipbord = Gtk.Clipboard.get(Gdk.SELECTION_PRIMARY) 
 url = clipbord.wait_for_text()
+clipboard.store()
 ```
 
 
-##Get '<title>this</title>' of an webpage
+##
+```
+
+```
+##Get title of an webpage
+Wee only need an url.
+```
+import urllib2
+from BeautifulSoup import BeautifulSoup
+
+html = urllib2.urlopen("http://www.ubuntu.com").read()
+soup = BeautifulSoup(html)
+print soup.title.string
+```
+
+If you don´t need to retrive the title from https site, you can use lxml.
+```
 import lxml.html 
-```
-t = lxml.html.parse("http://www.google.com") 
-print t.find(".//title").text
-```
 
-
-##How to find and kill an app on Quickly / Ubuntu-app. 
-```
-voidcode@voidcode-Aspire-5750:~$ ps -ax | grep easy-stopwatch 
-Warning: bad ps syntax, perhaps a bogus '-'? See http://procps.sf.net/faq.html 
-23477 pts/0    Sl     0:07 /usr/bin/python bin/easy-stopwatch 
-24536 pts/4    S+     0:00 grep --color=auto easy-stopwatch 
-voidcode@voidcode-Aspire-5750:~$ kill -9 23477 
+t = lxml.html.parse("http://www.ubuntu.com") 
+print t.find(".//title").text 
 ```
 
