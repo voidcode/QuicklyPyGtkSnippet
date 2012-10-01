@@ -1,7 +1,7 @@
 #QuicklyPyGtkSnippet
 ===================
 
-Just some snippet for Ubuntu App Development.
+Just some code-snippet for [Ubuntu App Development](http://developer.ubuntu.com/showdown/workshops/).
 
 Focus is on Python Gtk and Quickly.
 
@@ -58,11 +58,10 @@ def on_clicked_folder(self, widget):
 ```
 
 
-
 ##Save GtkTextView data in a file
 ```
 viewbuffer = self.builder.get_object("myview").get_buffer() 
-file = open("~/test", "w") # “~/test” is the location where the file is being save
+file = open("~/myfile", "w") # “~/test” is the location where the file is being save
 file.write(viewbuffer.get_text(viewbuffer.get_start_iter(), viewbuffer.get_end_iter(), include_hidden_chars=True)) 
 file.close()
 ```
@@ -82,11 +81,12 @@ print self.json["USD"]["30d"]
 
 
 ##Get clipbord-text 
+Output: last select text
 ```
 from gi.repository import Gtk, Gdk
 
 clipbord = Gtk.Clipboard.get(Gdk.SELECTION_PRIMARY) 
-url = clipbord.wait_for_text()
+print url = clipbord.wait_for_text()
 clipboard.store()
 ```
 
