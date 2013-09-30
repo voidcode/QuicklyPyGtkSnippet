@@ -40,11 +40,6 @@ self.webview.show()
 self.webview.open("http://www.ubuntu.com")
 ```
 
-##How to set an Notebook´s taps-position to: TOP, RIGHT, LEFT or BUTTOM
-```
-self.notebook = Gtk.Notebook()
-self.notebook.set_tab_pos(Gtk.PositionType.RIGHT)
-```
 
 ##GtkFileChooserDialog with button-handler
 NB:This only returns the path of the select-folder.
